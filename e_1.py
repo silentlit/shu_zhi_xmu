@@ -12,6 +12,16 @@ def get_nt_res(x_list: list, y_list: list, x_new):
     return res
 
 
+def get_lgr_res(x_list: list, y_list: list, x_new):
+    res = 0.0
+    for i, y in enumerate(y_list):
+        lgr_cof = 1.0
+        for j, x in enumerate(x_list):
+            lgr_cof *= (x - x_new) / (x - x_list[i]) if i != j else 1
+        res += y * lgr_cof
+    return res
+
+
 def case_1():
     x_list = [37.8, 21.1, 4.4, -12.2, -28.9]
     y_list = [15.4, 10.3, 6.6, 3.9, 2.2]
@@ -20,6 +30,8 @@ def case_1():
 
     print('f(-20) res: {:.6f}, f(20) res: {:.6f}'.format(get_nt_res(x_list[1:], y_list[1:], -20),
                                                          get_nt_res(x_list[:-1], y_list[:-1], 20)))
+    print('f(-20) res: {:.6f}, f(20) res: {:.6f}'.format(get_lgr_res(x_list[1:], y_list[1:], -20),
+                                                         get_lgr_res(x_list[:-1], y_list[:-1], 20)))
 
 
 if __name__ == '__main__':
