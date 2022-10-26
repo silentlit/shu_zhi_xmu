@@ -117,7 +117,7 @@ def nt_lfs(func_list, var_list, ite_dict=None, eps=1e-4):
         delta_x_array, count = seidel_sor(cof_matrix, b_array,
                                           x_array=list(map(lambda x: ite_dict[x], var_list)),
                                           omega=1.2)
-        infeasibility = np.max(delta_x_array)
+        infeasibility = np.max(np.abs(delta_x_array))
         for i, var in enumerate(var_list):
             ite_dict[var] += delta_x_array[i]
 
