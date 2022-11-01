@@ -66,8 +66,11 @@ def run_case_1():
         print('s({}) = {}'.format(x, tri_sample(x, x_list, y_list, mode=1, x_0_pos_value=-9.45, x_n_pos_value=0.0)))
     print('{a}{b}{a}'.format(a='-' * 30, b='试利用样条函数插值求Ct结束'))
 
-    plt.rcParams['font.sans-serif'] = ['Heiti TC']
-    plt.rcParams['axes.unicode_minus'] = False
+    try:
+        plt.rcParams['font.sans-serif'] = ['Heiti TC']
+        plt.rcParams['axes.unicode_minus'] = False
+    except Exception as e:
+        print(e)
     step = 0.05
     # length = 20
     # width = 25
@@ -80,10 +83,9 @@ def run_case_1():
     y_list = [-0.8, -0.34, 0.59, 0.59, 0.23]
     x_sample_list = [x_list[0]]
     for i in range(1, len(x_list)):
-        count = 1
-        while x_sample_list[-1] + count * step < x_list[i]:
-            x_sample_list.append(x_sample_list[-1] + count * step)
-            count += 1
+        while x_sample_list[-1] + step < x_list[i]:
+            x_sample_list.append(x_sample_list[-1] + step)
+        x_sample_list.append(x_list[i])
     y_sample_list = list(map(lambda x_: tri_sample(x_, x_list, y_list, 2, 0.0, 0.0), x_sample_list))
     ax = plt.subplot(2, 2, 1)
     plt.plot(x_sample_list, y_sample_list)
@@ -94,10 +96,9 @@ def run_case_1():
     y_list = [0.1, 0.28, 1.03, 1.5, 1.44]
     x_sample_list = [x_list[0]]
     for i in range(1, len(x_list)):
-        count = 1
-        while x_sample_list[-1] + count * step < x_list[i]:
-            x_sample_list.append(x_sample_list[-1] + count * step)
-            count += 1
+        while x_sample_list[-1] + step < x_list[i]:
+            x_sample_list.append(x_sample_list[-1] + step)
+        x_sample_list.append(x_list[i])
     y_sample_list = list(map(lambda x_: tri_sample(x_, x_list, y_list, 2, 0.0, 0.0), x_sample_list))
     ax = plt.subplot(2, 2, 2)
     plt.plot(x_sample_list, y_sample_list)
@@ -108,10 +109,9 @@ def run_case_1():
     y_list = [0.74, -0.82, -1.27, -0.92, -0.92]
     x_sample_list = [x_list[0]]
     for i in range(1, len(x_list)):
-        count = 1
-        while x_sample_list[-1] + count * step < x_list[i]:
-            x_sample_list.append(x_sample_list[-1] + count * step)
-            count += 1
+        while x_sample_list[-1] + step < x_list[i]:
+            x_sample_list.append(x_sample_list[-1] + step)
+        x_sample_list.append(x_list[i])
     y_sample_list = list(map(lambda x_: tri_sample(x_, x_list, y_list, 2, 0.0, 0.0), x_sample_list))
     ax = plt.subplot(2, 2, 3)
     plt.plot(x_sample_list, y_sample_list)
@@ -122,15 +122,15 @@ def run_case_1():
     y_list = [-1.04, -0.79, -0.06, 1.0, 0.0]
     x_sample_list = [x_list[0]]
     for i in range(1, len(x_list)):
-        count = 1
-        while x_sample_list[-1] + count * step < x_list[i]:
-            x_sample_list.append(x_sample_list[-1] + count * step)
-            count += 1
+        while x_sample_list[-1] + step < x_list[i]:
+            x_sample_list.append(x_sample_list[-1] + step)
+        x_sample_list.append(x_list[i])
     y_sample_list = list(map(lambda x_: tri_sample(x_, x_list, y_list, 2, 0.0, 0.0), x_sample_list))
     ax = plt.subplot(2, 2, 4)
     plt.plot(x_sample_list, y_sample_list)
     plt.title('case 4', fontsize=20)
     plt.grid(True, linestyle="--", alpha=0.5)
+
     plt.show()
     plt.close()
     print('{a}{b}{a}'.format(a='-' * 30, b='利用自由边界三次样条函数拟合结束'))
