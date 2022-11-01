@@ -89,6 +89,7 @@ def run_case_1():
     y_sample_list = list(map(lambda x_: tri_sample(x_, x_list, y_list, 2, 0.0, 0.0), x_sample_list))
     ax = plt.subplot(2, 2, 1)
     plt.plot(x_sample_list, y_sample_list)
+    plt.scatter(x_list, y_list)
     plt.title('case 1', fontsize=20)
     plt.grid(True, linestyle="--", alpha=0.5)
 
@@ -102,6 +103,7 @@ def run_case_1():
     y_sample_list = list(map(lambda x_: tri_sample(x_, x_list, y_list, 2, 0.0, 0.0), x_sample_list))
     ax = plt.subplot(2, 2, 2)
     plt.plot(x_sample_list, y_sample_list)
+    plt.scatter(x_list, y_list)
     plt.title('case 2', fontsize=20)
     plt.grid(True, linestyle="--", alpha=0.5)
 
@@ -115,6 +117,7 @@ def run_case_1():
     y_sample_list = list(map(lambda x_: tri_sample(x_, x_list, y_list, 2, 0.0, 0.0), x_sample_list))
     ax = plt.subplot(2, 2, 3)
     plt.plot(x_sample_list, y_sample_list)
+    plt.scatter(x_list, y_list)
     plt.title('case 3', fontsize=20)
     plt.grid(True, linestyle="--", alpha=0.5)
 
@@ -128,6 +131,7 @@ def run_case_1():
     y_sample_list = list(map(lambda x_: tri_sample(x_, x_list, y_list, 2, 0.0, 0.0), x_sample_list))
     ax = plt.subplot(2, 2, 4)
     plt.plot(x_sample_list, y_sample_list)
+    plt.scatter(x_list, y_list)
     plt.title('case 4', fontsize=20)
     plt.grid(True, linestyle="--", alpha=0.5)
 
